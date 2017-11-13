@@ -9,13 +9,17 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Orientation="Vertical">
-            <TextBlock Text="Login" FontSize="36" Margin="4" TextAlignment="Center"/>
+            <TextBlock Text="Tiling" FontSize="36" Margin="4" TextAlignment="Center"/>
             <TextBlock x:ConnectionId='1' x:Name="ErrorMessage" Text="" FontSize="20" Margin="4" Foreground="Red" TextAlignment="Center"/>
-            <TextBlock Text="Enter your username below" Margin="0,0,0,20"
+            <TextBlock Text="Enter the size of The Grid" Margin="0,0,0,20"
                TextWrapping="Wrap" Width="300"
                TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
-            <TextBox x:ConnectionId='2' x:Name="UsernameTextBox" Margin="4" Width="250"/>
-            <Button x:ConnectionId='3' x:Name="PassportSignInButton" Content="Login" Background="DodgerBlue" Foreground="White"/>
+            <TextBox x:ConnectionId='2' x:Name="SizeOfGrid" Margin="4" Width="250"/>
+            <TextBlock Text="Enter the size of the Tile" Margin="0,0,0,20"
+               TextWrapping="Wrap" Width="300"
+               TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+            <TextBox x:ConnectionId='3' x:Name="SizeOfTiles" Margin="4" Width="250"/>
+            <Button x:ConnectionId='4' x:Name="generateGrid" Content="Generate A Tiling Grid" Background="DodgerBlue" Foreground="White" HorizontalAlignment="Center"                             />
            </StackPanel>
     </Grid>
 </Page>

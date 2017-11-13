@@ -28,5 +28,10 @@ namespace TillingAppProject
         {
             this.InitializeComponent();
         }
+
+        private void generateGrid_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
     }
 }

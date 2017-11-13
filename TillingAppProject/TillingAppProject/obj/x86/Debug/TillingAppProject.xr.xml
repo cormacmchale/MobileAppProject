@@ -34,6 +34,8 @@
       <RootProperty Name="Content" />
       <RootProperty Name="Background" />
       <RootProperty Name="Foreground" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootEvent Name="Tapped" />
     </RootType>
     <RootType FullName="TillingAppProject.MainPage" />
   </Roots.RootTypes>
