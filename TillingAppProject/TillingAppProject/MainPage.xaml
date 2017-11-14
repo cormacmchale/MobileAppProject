@@ -7,19 +7,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Orientation="Vertical">
-            <TextBlock Text="Tiling" FontSize="36" Margin="4" TextAlignment="Center"/>
-            <TextBlock x:Name="ErrorMessage" Text="" FontSize="20" Margin="4" Foreground="Red" TextAlignment="Center"/>
-            <TextBlock Text="Enter the size of The Grid" Margin="0,0,0,20"
-               TextWrapping="Wrap" Width="300"
-               TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
-            <TextBox x:Name="SizeOfGrid" Margin="4" Width="250"/>
-            <TextBlock Text="Enter the size of the Tile" Margin="0,0,0,20"
-               TextWrapping="Wrap" Width="300"
-               TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
-            <TextBox x:Name="SizeOfTiles" Margin="4" Width="250"/>
-            <Button x:Name="generateGrid" Content="Generate A Tiling Grid" Background="DodgerBlue" Foreground="White" HorizontalAlignment="Center" Tapped="generateGrid_Tapped"/>
+    <Grid Name="rootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid  Background="BlanchedAlmond" Margin="20">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Tiling" FontSize="36" Margin="4" TextAlignment="Center"/>
+                <TextBlock Text="Enter the size of The Grid" Margin="0,0,0,20" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                <TextBox x:Name="SizeOfGrid" Margin="4" Width="250"/>
+                <TextBlock Text="Enter the size of the Tile" Margin="0,0,0,20" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                <TextBox x:Name="SizeOfTiles" Margin="4" Width="250"/>
+                <Button x:Name="generateGrid" Content="Generate A Tiling Grid" Background="DodgerBlue" Foreground="White" HorizontalAlignment="Center" Tapped="generateGrid_Tapped"/>
            </StackPanel>
-    </Grid>
+           </Grid>
+        </Grid>
 </Page>
