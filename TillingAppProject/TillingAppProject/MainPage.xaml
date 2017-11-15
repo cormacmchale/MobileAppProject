@@ -15,7 +15,7 @@
                 <TextBox x:Name="SizeOfGrid" Margin="4" Width="250"/>
                 <TextBlock Text="Enter the size of the Tile" Margin="0,0,0,20" TextWrapping="Wrap" Width="300" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
                 <TextBox x:Name="SizeOfTiles" Margin="4" Width="250"/>
-                <Button x:Name="generateGrid" Content="Generate A Tiling Grid" Background="DodgerBlue" Foreground="White" HorizontalAlignment="Center" Tapped="generateGrid_Tapped"/>
+                <Button x:Name="generateGrid" Content="Generate A Tiling Grid" Background="DodgerBlue" Foreground="White" HorizontalAlignment="Center" Click="generateGrid_Click_1"/>
            </StackPanel>
            </Grid>
         </Grid>

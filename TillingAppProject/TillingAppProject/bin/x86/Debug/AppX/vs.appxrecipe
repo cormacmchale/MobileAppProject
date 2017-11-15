@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\Cormac\Desktop\Second Year\MobileApp\TillingAppProject\TillingAppProject\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-11-14T10:47:05.302</Modified>
+      <Modified>2017-11-15T12:12:39.688</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\Second Year\MobileApp\TillingAppProject\TillingAppProject\bin\x86\Debug\TillingAppProject.exe">
       <PackagePath>entrypoint\TillingAppProject.exe</PackagePath>
-      <Modified>2017-11-14T10:47:04.805</Modified>
+      <Modified>2017-11-15T12:12:39.396</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\.nuget\packages\Microsoft.CSharp\4.0.1\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -535,7 +535,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\Second Year\MobileApp\TillingAppProject\TillingAppProject\bin\x86\Debug\TillingAppProject.xr.xml">
       <PackagePath>TillingAppProject.xr.xml</PackagePath>
-      <Modified>2017-11-14T10:40:20.490</Modified>
+      <Modified>2017-11-15T12:07:39.060</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.15063.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -544,11 +544,11 @@
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\Second Year\MobileApp\TillingAppProject\TillingAppProject\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-11-14T10:40:21.638</Modified>
+      <Modified>2017-11-15T12:09:34.206</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\Second Year\MobileApp\TillingAppProject\TillingAppProject\bin\x86\Debug\Core\TillingAppProject.exe">
       <PackagePath>TillingAppProject.exe</PackagePath>
-      <Modified>2017-11-14T10:47:05.293</Modified>
+      <Modified>2017-11-15T12:12:39.682</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

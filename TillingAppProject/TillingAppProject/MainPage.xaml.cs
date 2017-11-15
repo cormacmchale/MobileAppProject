@@ -28,10 +28,7 @@ namespace TillingAppProject
             this.InitializeComponent();
         }
 
-        private void generateGrid_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            addTilingGrid();
-        }
+
 
         private void addTilingGrid()
         {
@@ -69,6 +66,11 @@ namespace TillingAppProject
             }
             // add chessboard to root grid
             rootGrid.Children.Add(tileTemplate);
+        }
+
+        private void generateGrid_Click_1(object sender, RoutedEventArgs e)
+        {
+             addTilingGrid();
         }
     }
 }
