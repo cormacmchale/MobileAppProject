@@ -45,7 +45,7 @@ namespace TillingAppProject
             //name, size, allignment,, bacrkound colour
             tileTemplate.Name = "tileGrid";
             tileTemplate.HorizontalAlignment = HorizontalAlignment.Center;
-            tileTemplate.VerticalAlignment = VerticalAlignment.Top;
+            tileTemplate.VerticalAlignment = VerticalAlignment.Center;
             //tileTemplate.Height = _rowHeight; //100 * _rows;
             //tileTemplate.Width = +_rowHeight;// 100 * _rows;
             tileTemplate.Background = new SolidColorBrush(Colors.Gray);
