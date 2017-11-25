@@ -1,0 +1,17 @@
+﻿<Page
+    x:Class="McHaleCormacProject.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:McHaleCormacProject"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Name="rootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="Auto">
+
+        <StackPanel Width="Auto" Height ="200" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="startGame" Content="Start Game" Click="startGame_Click" />
+        </StackPanel>
+
+    </Grid>
+</Page>
