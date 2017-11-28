@@ -29,10 +29,12 @@ namespace McHaleCormacProject
         Ellipse makeMove = new Ellipse();
         Ellipse Player1 = new Ellipse();
         Ellipse Player2 = new Ellipse();
+        Ellipse [,] searchForWinarray = new Ellipse [6,7];
+        Ellipse checkWinRed = new Ellipse();
 
         public MainPage()
         {
-            this.InitializeComponent();
+            this.InitializeComponent();          
         }
         //start game
         private void startGame_Click(object sender, RoutedEventArgs e)
@@ -78,15 +80,19 @@ namespace McHaleCormacProject
                 {
                     //add white ellipses to set up board visually and prepare for moves
                     Ellipse moveChoice = new Ellipse();
-                    moveChoice.Name = "searchForThis"+j;
+                    moveChoice.Name = "search"+i+j;
                     moveChoice.Height = 40;
                     moveChoice.Width = 40;
                     moveChoice.Fill = new SolidColorBrush(Colors.White);
                     moveChoice.SetValue(Grid.RowProperty, i);
-                    moveChoice.SetValue(Grid.ColumnProperty, j);
+                    moveChoice.SetValue(Grid.ColumnProperty, j);                   
+                    //Ellipse addEllipse = FindName("search" + i + j) as Ellipse;
                     playingBoard.Children.Add(moveChoice);
                     moveChoice.Tapped+= MovePiece;
+                    searchForWinarray[i,j]  = moveChoice;
+
                 }
+
             }
             
             //add players to board in correct order
@@ -105,38 +111,15 @@ namespace McHaleCormacProject
             alignGame.Children.Add(playingBoard);
             alignGame.Children.Add(Player2);
 
-
+            
         }
-
 
         private void MovePiece(object sender, TappedRoutedEventArgs e)
         {
-            //counter for 4
-            int searchForWin;
             //Grid search = FindName("playingBoard") as Grid;
             Ellipse movedPiece = (Ellipse)sender;
             movedPiece.Fill = makeMove.Fill;
-
-
-            //must search through each row for moves
-            for (int i = 0; i > 6; i++)
-            {
-                //searchForWin = 0;
-                //for (int j = 0; j < 7; j++)
-                //{
-                   Ellipse found = FindName("movedPiece"+i) as Ellipse;
-                   Ellipse found2 = FindName("movedPiece" + (i + 1)) as Ellipse;
-                    if (found.Fill == found2.Fill)
-                    {
-                       
-                            movedPiece.Fill = new SolidColorBrush(Colors.Black);
-                       
-                    }
-
-                   
-                   
-               // }
-            }
+            searchForWin();
         }
 
         private void MoveChoice(object sender, TappedRoutedEventArgs e)
@@ -145,5 +128,35 @@ namespace McHaleCormacProject
             makeMove.Fill = moveThisPeice.Fill;
         }
 
+        private void searchForWin()
+        {
+            String checkWhere = "hello";
+            checkWinRed.Fill = new SolidColorBrush(Colors.Red);
+            //checking to see if i can find grid
+            //Grid gameFound = FindName("rootGrid") as Grid;
+            //gridFound.Background = new SolidColorBrush(Colors.Black);
+            //search and find all ellipses
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    Ellipse movedPiece = searchForWinarray[i, j];
+
+                    movedPiece.Name = "foundPiece" + i + j;
+                    //checkWin.Fill = checkWinRed.Fill;
+
+                    movedPiece.Fill = new SolidColorBrush(Colors.Red);
+                    //checkWin.SetValue(Grid.RowProperty, i);
+                    //checkWin.SetValue(Grid.ColumnProperty, j);
+                    //checkWin.Tapped += MovePiece;
+                    //Console.WriteLine(checkWhere);                   
+                    //gameFound.Children.Add(checkWin);
+                    
+                }
+            }
+
+            
+
+        }
     }
 }
