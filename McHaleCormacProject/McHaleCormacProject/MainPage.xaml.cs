@@ -30,9 +30,16 @@ namespace McHaleCormacProject
         Ellipse Player1 = new Ellipse();
         Ellipse Player2 = new Ellipse();
         Ellipse [,] searchForWinarray = new Ellipse [6,7];
-        Ellipse checkWinRed = new Ellipse();
         Boolean playerTurn = false;
-
+        #region - column counters
+        int column1counter = 0;
+        int column2counter = 0;
+        int column3counter = 0;
+        int column4counter = 0;
+        int column5counter = 0;
+        int column6counter = 0;
+        int column7counter = 0;
+#endregion
         public MainPage()
         {
             this.InitializeComponent();          
@@ -46,18 +53,20 @@ namespace McHaleCormacProject
 
         private void createPlayingBoard()
         {
+
             //changeBackRound to blue
             Grid changeRoot = FindName("rootGrid") as Grid;
             changeRoot.Background = new SolidColorBrush(Colors.Gray);
             //may not need this
             //changeRoot.HorizontalAlignment = HorizontalAlignment.Center;
+
             StackPanel alignGame = new StackPanel();
             alignGame.Orientation = Orientation.Horizontal;
             alignGame.HorizontalAlignment = HorizontalAlignment.Center;
             alignGame.Height = 500;
             alignGame.Width = 700;
             changeRoot.Children.Add(alignGame);
-            //create the actual objcet
+            //create the actual object
             Grid playingBoard = new Grid();
             playingBoard.Name = "referenceBoard";
             playingBoard.Height = 400;
@@ -108,41 +117,279 @@ namespace McHaleCormacProject
             Player2.Margin = new Thickness(10, 10, 10, 10);
             Player2.Tapped += MoveChoice;
             //add the board
+           
+            changeRoot.Children.Add(playingBoard);
             alignGame.Children.Add(Player1);
-            alignGame.Children.Add(playingBoard);
             alignGame.Children.Add(Player2);
 
             
         }
 
+
         private void MovePiece(object sender, TappedRoutedEventArgs e)
-        {
-            //Grid search = FindName("playingBoard") as Grid;
-            int defaultRow = 5;
+        {          
             Ellipse arrayPosition = (Ellipse)sender;
             string name = arrayPosition.Name;
             string column = name.Substring(7, 1);
             string row = name.Substring(6, 1);
             int columnReference = Int32.Parse(column);
             int rowReference = Int32.Parse(row);
-
-
-            if (playerTurn == true)// && arrayPosition.Fill == new SolidColorBrush(Colors.Red))
+#region - everymove
+            if (playerTurn == true && columnReference == 0 && column1counter == 0)// && arrayPosition.Fill == new SolidColorBrush(Colors.Red))
             {
-
-                arrayPosition.Fill = makeMove.Fill;
-                arrayPosition.SetValue(Grid.ColumnProperty, columnReference);
-                arrayPosition.SetValue(Grid.RowProperty, defaultRow);
+                searchForWinarray[5,columnReference].Fill = makeMove.Fill;
+                column1counter++;
                 playerTurn = false;
-
             }
-            else
+            else if (playerTurn == true && column1counter == 1 && columnReference == 0)
             {
-
+                searchForWinarray[4, columnReference].Fill = makeMove.Fill;
+                column1counter++;
+                playerTurn = false;
             }
-            
- 
-            //searchForWin();
+            else if (playerTurn == true && column1counter == 2 && columnReference == 0)
+            {
+                searchForWinarray[3, columnReference].Fill = makeMove.Fill;
+                column1counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column1counter == 3 && columnReference == 0)
+            {
+                searchForWinarray[2, columnReference].Fill = makeMove.Fill;
+                column1counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column1counter == 4 && columnReference == 0)
+            {
+                searchForWinarray[1, columnReference].Fill = makeMove.Fill;
+                column1counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column1counter == 5 && columnReference == 0)
+            {
+                searchForWinarray[0, columnReference].Fill = makeMove.Fill;
+                column1counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column2counter == 0 && columnReference == 1)
+            {
+                searchForWinarray[5, columnReference].Fill = makeMove.Fill;
+                column2counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column2counter == 1 && columnReference == 1)
+            {
+                searchForWinarray[4, columnReference].Fill = makeMove.Fill;
+                column2counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column2counter == 2 && columnReference == 1)
+            {
+                searchForWinarray[3, columnReference].Fill = makeMove.Fill;
+                column2counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column2counter == 3 && columnReference == 1)
+            {
+                searchForWinarray[2, columnReference].Fill = makeMove.Fill;
+                column2counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column2counter == 4 && columnReference == 1)
+            {
+                searchForWinarray[1, columnReference].Fill = makeMove.Fill;
+                column2counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column2counter == 5 && columnReference == 1)
+            {
+                searchForWinarray[0, columnReference].Fill = makeMove.Fill;
+                column2counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column3counter == 0 && columnReference == 2)
+            {
+                searchForWinarray[5, columnReference].Fill = makeMove.Fill;
+                column3counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column3counter == 1 && columnReference == 2)
+            {
+                searchForWinarray[4, columnReference].Fill = makeMove.Fill;
+                column3counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column3counter == 2 && columnReference == 2)
+            {
+                searchForWinarray[3, columnReference].Fill = makeMove.Fill;
+                column3counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column3counter == 3 && columnReference == 2)
+            {
+                searchForWinarray[2, columnReference].Fill = makeMove.Fill;
+                column3counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column3counter == 4 && columnReference == 2)
+            {
+                searchForWinarray[1, columnReference].Fill = makeMove.Fill;
+                column3counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column3counter == 5 && columnReference == 2)
+            {
+                searchForWinarray[0, columnReference].Fill = makeMove.Fill;
+                column3counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column4counter == 0 && columnReference == 3)
+            {
+                searchForWinarray[5, columnReference].Fill = makeMove.Fill;
+                column4counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column4counter == 1 && columnReference == 3)
+            {
+                searchForWinarray[4, columnReference].Fill = makeMove.Fill;
+                column4counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column4counter == 2 && columnReference == 3)
+            {
+                searchForWinarray[3, columnReference].Fill = makeMove.Fill;
+                column4counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column4counter == 3 && columnReference == 3)
+            {
+                searchForWinarray[2, columnReference].Fill = makeMove.Fill;
+                column4counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column4counter == 4 && columnReference == 3)
+            {
+                searchForWinarray[1, columnReference].Fill = makeMove.Fill;
+                column4counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column4counter == 5 && columnReference == 3)
+            {
+                searchForWinarray[0, columnReference].Fill = makeMove.Fill;
+                column4counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column5counter == 0 && columnReference == 4)
+            {
+                searchForWinarray[5, columnReference].Fill = makeMove.Fill;
+                column5counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column5counter == 1 && columnReference == 4)
+            {
+                searchForWinarray[4, columnReference].Fill = makeMove.Fill;
+                column5counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column5counter == 2 && columnReference == 4)
+            {
+                searchForWinarray[3, columnReference].Fill = makeMove.Fill;
+                column5counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column5counter == 3 && columnReference == 4)
+            {
+                searchForWinarray[2, columnReference].Fill = makeMove.Fill;
+                column5counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column5counter == 4 && columnReference == 4)
+            {
+                searchForWinarray[1, columnReference].Fill = makeMove.Fill;
+                column5counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column5counter == 5 && columnReference == 4)
+            {
+                searchForWinarray[0, columnReference].Fill = makeMove.Fill;
+                column5counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column6counter == 0 && columnReference == 5)
+            {
+                searchForWinarray[5, columnReference].Fill = makeMove.Fill;
+                column6counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column6counter == 1 && columnReference == 5)
+            {
+                searchForWinarray[4, columnReference].Fill = makeMove.Fill;
+                column6counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column6counter == 2 && columnReference == 5)
+            {
+                searchForWinarray[3, columnReference].Fill = makeMove.Fill;
+                column6counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column6counter == 3 && columnReference == 5)
+            {
+                searchForWinarray[2, columnReference].Fill = makeMove.Fill;
+                column6counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column6counter == 4 && columnReference == 5)
+            {
+                searchForWinarray[1, columnReference].Fill = makeMove.Fill;
+                column6counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column6counter == 5 && columnReference == 5)
+            {
+                searchForWinarray[0, columnReference].Fill = makeMove.Fill;
+                column6counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column7counter == 0 && columnReference == 6)
+            {
+                searchForWinarray[5, columnReference].Fill = makeMove.Fill;
+                column7counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column7counter == 1 && columnReference == 6)
+            {
+                searchForWinarray[4, columnReference].Fill = makeMove.Fill;
+                column7counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column7counter == 2 && columnReference == 6)
+            {
+                searchForWinarray[3, columnReference].Fill = makeMove.Fill;
+                column7counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column7counter == 3 && columnReference == 6)
+            {
+                searchForWinarray[2, columnReference].Fill = makeMove.Fill;
+                column7counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column7counter == 4 && columnReference == 6)
+            {
+                searchForWinarray[1, columnReference].Fill = makeMove.Fill;
+                column7counter++;
+                playerTurn = false;
+            }
+            else if (playerTurn == true && column7counter == 5 && columnReference == 6)
+            {
+                searchForWinarray[0, columnReference].Fill = makeMove.Fill;
+                column7counter++;
+                playerTurn = false;
+            }
+            #endregion
+
+            // searchForWin();
         }
 
         private void MoveChoice(object sender, TappedRoutedEventArgs e)
@@ -154,58 +401,19 @@ namespace McHaleCormacProject
 
         private void searchForWin()
         {
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //the old way....
-            /* String checkWhere = "hello";
-            checkWinRed.Fill = new SolidColorBrush(Colors.Red);
-            //checking to see if i can find grid
-            //Grid gameFound = FindName("rootGrid") as Grid;
-            //gridFound.Background = new SolidColorBrush(Colors.Black);
-            //search and find all ellipses
+           
             for (int i = 0; i < 6; i++)
             {
                 for (int j = 0; j < 7; j++)
                 {
-                    Ellipse movedPiece = searchForWinarray[i, j];
 
-                    movedPiece.Name = "foundPiece" + i + j;
-                    //checkWin.Fill = checkWinRed.Fill;
-                    //movedPiece.Fill = new SolidColorBrush(Colors.Red);
-                    //checkWin.SetValue(Grid.RowProperty, i);
-                    //checkWin.SetValue(Grid.ColumnProperty, j);
-                    movedPiece.Tapped += MovePiece;
-                    //Console.WriteLine(checkWhere);                   
-                    //gameFound.Children.Add(checkWin);
-
-
-                    //Ellipse Checked = FindName("foundPiece" + i + j) as Ellipse;
-                    if (foundPiece00.Fill == foundPiece01.Fill)
+                    if (searchForWinarray[i,j].Fill == searchForWinarray[i+1,j+1].Fill)
                     {
-                        counter++;
-                        movedPiece.Fill = new SolidColorBrush(Colors.Black);
+                        searchForWinarray[i,j].Fill = new SolidColorBrush(Colors.Black);
+                        
                     }                   
                 }
-            } */           
+            }           
         }
     }
 }
