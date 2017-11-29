@@ -31,6 +31,7 @@ namespace McHaleCormacProject
         Ellipse Player2 = new Ellipse();
         Ellipse [,] searchForWinarray = new Ellipse [6,7];
         Ellipse checkWinRed = new Ellipse();
+        Boolean playerTurn = false;
 
         public MainPage()
         {
@@ -117,20 +118,65 @@ namespace McHaleCormacProject
         private void MovePiece(object sender, TappedRoutedEventArgs e)
         {
             //Grid search = FindName("playingBoard") as Grid;
-            Ellipse movedPiece = (Ellipse)sender;
-            movedPiece.Fill = makeMove.Fill;
-            searchForWin();
+            int defaultRow = 5;
+            Ellipse arrayPosition = (Ellipse)sender;
+            string name = arrayPosition.Name;
+            string column = name.Substring(7, 1);
+            string row = name.Substring(6, 1);
+            int columnReference = Int32.Parse(column);
+            int rowReference = Int32.Parse(row);
+
+
+            if (playerTurn == true)// && arrayPosition.Fill == new SolidColorBrush(Colors.Red))
+            {
+
+                arrayPosition.Fill = makeMove.Fill;
+                arrayPosition.SetValue(Grid.ColumnProperty, columnReference);
+                arrayPosition.SetValue(Grid.RowProperty, defaultRow);
+                playerTurn = false;
+
+            }
+            else
+            {
+
+            }
+            
+ 
+            //searchForWin();
         }
 
         private void MoveChoice(object sender, TappedRoutedEventArgs e)
         {
             Ellipse moveThisPeice = (Ellipse)sender;
+            playerTurn = true;
             makeMove.Fill = moveThisPeice.Fill;
         }
 
         private void searchForWin()
         {
-            String checkWhere = "hello";
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //the old way....
+            /* String checkWhere = "hello";
             checkWinRed.Fill = new SolidColorBrush(Colors.Red);
             //checking to see if i can find grid
             //Grid gameFound = FindName("rootGrid") as Grid;
@@ -144,19 +190,22 @@ namespace McHaleCormacProject
 
                     movedPiece.Name = "foundPiece" + i + j;
                     //checkWin.Fill = checkWinRed.Fill;
-
-                    movedPiece.Fill = new SolidColorBrush(Colors.Red);
+                    //movedPiece.Fill = new SolidColorBrush(Colors.Red);
                     //checkWin.SetValue(Grid.RowProperty, i);
                     //checkWin.SetValue(Grid.ColumnProperty, j);
-                    //checkWin.Tapped += MovePiece;
+                    movedPiece.Tapped += MovePiece;
                     //Console.WriteLine(checkWhere);                   
                     //gameFound.Children.Add(checkWin);
-                    
+
+
+                    //Ellipse Checked = FindName("foundPiece" + i + j) as Ellipse;
+                    if (foundPiece00.Fill == foundPiece01.Fill)
+                    {
+                        counter++;
+                        movedPiece.Fill = new SolidColorBrush(Colors.Black);
+                    }                   
                 }
-            }
-
-            
-
+            } */           
         }
     }
 }
