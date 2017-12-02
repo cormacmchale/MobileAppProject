@@ -26,11 +26,16 @@ namespace McHaleCormacProject
 
     public sealed partial class MainPage : Page
     {
+        //all the static variable that I need to complete logic
+        #region - Global variables
         Ellipse makeMove = new Ellipse();
         Ellipse Player1 = new Ellipse();
         Ellipse Player2 = new Ellipse();
         Ellipse [,] searchForWinarray = new Ellipse [6,7];
         Boolean playerTurn = false;
+        String comparePiece;
+#endregion
+        //for stacking in columns correctly
         #region - column counters
         int column1counter = 0;
         int column2counter = 0;
@@ -44,16 +49,19 @@ namespace McHaleCormacProject
         {
             this.InitializeComponent();          
         }
-        //start game
+        
+        //start game clicked event
         private void startGame_Click(object sender, RoutedEventArgs e)
         {
             //run correct function
             createPlayingBoard();
         }
-
+        
+        // all gui for the board and how it appears when app runs
+        // creates all ellipes for board and stores them in searchforwinarray
+        // also creates ellipses for player1 (red) and player2 (yellow)
         private void createPlayingBoard()
         {
-
             //changeBackRound to blue
             Grid changeRoot = FindName("rootGrid") as Grid;
             changeRoot.Background = new SolidColorBrush(Colors.Gray);
@@ -91,6 +99,7 @@ namespace McHaleCormacProject
                     //add white ellipses to set up board visually and prepare for moves
                     Ellipse moveChoice = new Ellipse();
                     moveChoice.Name = "search"+i+j;
+                    moveChoice.Tag = "tag" + i + j;
                     moveChoice.Height = 40;
                     moveChoice.Width = 40;
                     moveChoice.Fill = new SolidColorBrush(Colors.White);
@@ -100,11 +109,8 @@ namespace McHaleCormacProject
                     playingBoard.Children.Add(moveChoice);
                     moveChoice.Tapped+= MovePiece;
                     searchForWinarray[i,j]  = moveChoice;
-
                 }
-
-            }
-            
+            }           
             //add players to board in correct order
             Player1.Height = 60;
             Player1.Width = 60;
@@ -115,19 +121,17 @@ namespace McHaleCormacProject
             Player2.Width = 60;
             Player2.Fill = new SolidColorBrush(Colors.Yellow);
             Player2.Margin = new Thickness(10, 10, 10, 10);
-            Player2.Tapped += MoveChoice;
-            //add the board
-           
-            changeRoot.Children.Add(playingBoard);
+            Player2.Tapped += MoveChoiceTwo;
+            //add the board                  
+            alignGame.Children.Add(playingBoard);
             alignGame.Children.Add(Player1);
-            alignGame.Children.Add(Player2);
-
-            
+            alignGame.Children.Add(Player2);           
         }
-
-
+        
+        //the tapped event for all white ellipes on the board
+        //also contains all the moves so that the pieces stack properly
         private void MovePiece(object sender, TappedRoutedEventArgs e)
-        {          
+        {
             Ellipse arrayPosition = (Ellipse)sender;
             string name = arrayPosition.Name;
             string column = name.Substring(7, 1);
@@ -135,285 +139,707 @@ namespace McHaleCormacProject
             int columnReference = Int32.Parse(column);
             int rowReference = Int32.Parse(row);
 #region - everymove
-            if (playerTurn == true && columnReference == 0 && column1counter == 0)// && arrayPosition.Fill == new SolidColorBrush(Colors.Red))
+            if (playerTurn == true  && column1counter == 0  && columnReference == 0)// && arrayPosition.Fill == new SolidColorBrush(Colors.Red))
             {
-                searchForWinarray[5,columnReference].Fill = makeMove.Fill;
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[5, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[5, columnReference].Tag = "red";
+                }
+                searchForWinarray[5,columnReference].Fill = makeMove.Fill;                
                 column1counter++;
                 playerTurn = false;
+
             }
             else if (playerTurn == true && column1counter == 1 && columnReference == 0)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[4, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[4, columnReference].Tag = "red";
+                }
                 searchForWinarray[4, columnReference].Fill = makeMove.Fill;
                 column1counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column1counter == 2 && columnReference == 0)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[3, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[3, columnReference].Tag = "red";
+                }
                 searchForWinarray[3, columnReference].Fill = makeMove.Fill;
                 column1counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column1counter == 3 && columnReference == 0)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[2, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[2, columnReference].Tag = "red";
+                }
                 searchForWinarray[2, columnReference].Fill = makeMove.Fill;
                 column1counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column1counter == 4 && columnReference == 0)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[1, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[1, columnReference].Tag = "red";
+                }
                 searchForWinarray[1, columnReference].Fill = makeMove.Fill;
                 column1counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column1counter == 5 && columnReference == 0)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[0, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[0, columnReference].Tag = "red";
+                }
                 searchForWinarray[0, columnReference].Fill = makeMove.Fill;
                 column1counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column2counter == 0 && columnReference == 1)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[5, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[5, columnReference].Tag = "red";
+                }
                 searchForWinarray[5, columnReference].Fill = makeMove.Fill;
                 column2counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column2counter == 1 && columnReference == 1)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[4, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[4, columnReference].Tag = "red";
+                }
                 searchForWinarray[4, columnReference].Fill = makeMove.Fill;
                 column2counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column2counter == 2 && columnReference == 1)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[3, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[3, columnReference].Tag = "red";
+                }
                 searchForWinarray[3, columnReference].Fill = makeMove.Fill;
                 column2counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column2counter == 3 && columnReference == 1)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[2, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[2, columnReference].Tag = "red";
+                }
                 searchForWinarray[2, columnReference].Fill = makeMove.Fill;
                 column2counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column2counter == 4 && columnReference == 1)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[1, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[1, columnReference].Tag = "red";
+                }
                 searchForWinarray[1, columnReference].Fill = makeMove.Fill;
                 column2counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column2counter == 5 && columnReference == 1)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[0, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[0, columnReference].Tag = "red";
+                }
                 searchForWinarray[0, columnReference].Fill = makeMove.Fill;
                 column2counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column3counter == 0 && columnReference == 2)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[5, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[5, columnReference].Tag = "red";
+                }
                 searchForWinarray[5, columnReference].Fill = makeMove.Fill;
                 column3counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column3counter == 1 && columnReference == 2)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[4, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[4, columnReference].Tag = "red";
+                }
                 searchForWinarray[4, columnReference].Fill = makeMove.Fill;
                 column3counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column3counter == 2 && columnReference == 2)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[3, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[3, columnReference].Tag = "red";
+                }
                 searchForWinarray[3, columnReference].Fill = makeMove.Fill;
                 column3counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column3counter == 3 && columnReference == 2)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[2, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[2, columnReference].Tag = "red";
+                }
                 searchForWinarray[2, columnReference].Fill = makeMove.Fill;
                 column3counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column3counter == 4 && columnReference == 2)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[1, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[1, columnReference].Tag = "red";
+                }
                 searchForWinarray[1, columnReference].Fill = makeMove.Fill;
                 column3counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column3counter == 5 && columnReference == 2)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[0, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[0, columnReference].Tag = "red";
+                }
                 searchForWinarray[0, columnReference].Fill = makeMove.Fill;
                 column3counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column4counter == 0 && columnReference == 3)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[5, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[5, columnReference].Tag = "red";
+                }
                 searchForWinarray[5, columnReference].Fill = makeMove.Fill;
                 column4counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column4counter == 1 && columnReference == 3)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[4, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[4, columnReference].Tag = "red";
+                }
                 searchForWinarray[4, columnReference].Fill = makeMove.Fill;
                 column4counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column4counter == 2 && columnReference == 3)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[3, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[3, columnReference].Tag = "red";
+                }
                 searchForWinarray[3, columnReference].Fill = makeMove.Fill;
                 column4counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column4counter == 3 && columnReference == 3)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[2, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[2, columnReference].Tag = "red";
+                }
                 searchForWinarray[2, columnReference].Fill = makeMove.Fill;
                 column4counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column4counter == 4 && columnReference == 3)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[1, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[1, columnReference].Tag = "red";
+                }
                 searchForWinarray[1, columnReference].Fill = makeMove.Fill;
                 column4counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column4counter == 5 && columnReference == 3)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[0, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[0, columnReference].Tag = "red";
+                }
                 searchForWinarray[0, columnReference].Fill = makeMove.Fill;
                 column4counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column5counter == 0 && columnReference == 4)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[5, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[5, columnReference].Tag = "red";
+                }
                 searchForWinarray[5, columnReference].Fill = makeMove.Fill;
                 column5counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column5counter == 1 && columnReference == 4)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[4, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[4, columnReference].Tag = "red";
+                }
                 searchForWinarray[4, columnReference].Fill = makeMove.Fill;
                 column5counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column5counter == 2 && columnReference == 4)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[3, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[3, columnReference].Tag = "red";
+                }
                 searchForWinarray[3, columnReference].Fill = makeMove.Fill;
                 column5counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column5counter == 3 && columnReference == 4)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[2, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[2, columnReference].Tag = "red";
+                }
                 searchForWinarray[2, columnReference].Fill = makeMove.Fill;
                 column5counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column5counter == 4 && columnReference == 4)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[1, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[1, columnReference].Tag = "red";
+                }
                 searchForWinarray[1, columnReference].Fill = makeMove.Fill;
                 column5counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column5counter == 5 && columnReference == 4)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[0, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[0, columnReference].Tag = "red";
+                }
                 searchForWinarray[0, columnReference].Fill = makeMove.Fill;
                 column5counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column6counter == 0 && columnReference == 5)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[5, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[5, columnReference].Tag = "red";
+                }
                 searchForWinarray[5, columnReference].Fill = makeMove.Fill;
                 column6counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column6counter == 1 && columnReference == 5)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[4, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[4, columnReference].Tag = "red";
+                }
                 searchForWinarray[4, columnReference].Fill = makeMove.Fill;
                 column6counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column6counter == 2 && columnReference == 5)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[3, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[3, columnReference].Tag = "red";
+                }
                 searchForWinarray[3, columnReference].Fill = makeMove.Fill;
                 column6counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column6counter == 3 && columnReference == 5)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[2, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[2, columnReference].Tag = "red";
+                }
                 searchForWinarray[2, columnReference].Fill = makeMove.Fill;
                 column6counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column6counter == 4 && columnReference == 5)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[1, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[1, columnReference].Tag = "red";
+                }
                 searchForWinarray[1, columnReference].Fill = makeMove.Fill;
                 column6counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column6counter == 5 && columnReference == 5)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[0, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[0, columnReference].Tag = "red";
+                }
                 searchForWinarray[0, columnReference].Fill = makeMove.Fill;
                 column6counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column7counter == 0 && columnReference == 6)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[5, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[5, columnReference].Tag = "red";
+                }
                 searchForWinarray[5, columnReference].Fill = makeMove.Fill;
                 column7counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column7counter == 1 && columnReference == 6)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[4, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[4, columnReference].Tag = "red";
+                }
                 searchForWinarray[4, columnReference].Fill = makeMove.Fill;
                 column7counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column7counter == 2 && columnReference == 6)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[3, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[3, columnReference].Tag = "red";
+                }
                 searchForWinarray[3, columnReference].Fill = makeMove.Fill;
                 column7counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column7counter == 3 && columnReference == 6)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[2, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[2, columnReference].Tag = "red";
+                }
                 searchForWinarray[2, columnReference].Fill = makeMove.Fill;
                 column7counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column7counter == 4 && columnReference == 6)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[1, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[1, columnReference].Tag = "red";
+                }
                 searchForWinarray[1, columnReference].Fill = makeMove.Fill;
                 column7counter++;
                 playerTurn = false;
             }
             else if (playerTurn == true && column7counter == 5 && columnReference == 6)
             {
+                if (comparePiece == "Yellow")
+                {
+                    searchForWinarray[0, columnReference].Tag = "yellow";
+                }
+                else if (comparePiece == "Red")
+                {
+                    searchForWinarray[0, columnReference].Tag = "red";
+                }
                 searchForWinarray[0, columnReference].Fill = makeMove.Fill;
                 column7counter++;
                 playerTurn = false;
             }
             #endregion
-
-            // searchForWin();
+            searchForWin();
         }
-
+        
+        // Tapped event for player 1 (red)
         private void MoveChoice(object sender, TappedRoutedEventArgs e)
         {
-            Ellipse moveThisPeice = (Ellipse)sender;
-            playerTurn = true;
-            makeMove.Fill = moveThisPeice.Fill;
+                Ellipse moveThisPeice = (Ellipse)sender;
+                playerTurn = true;
+                makeMove.Fill = moveThisPeice.Fill;
+                comparePiece = "Red";
+                //searchForWin(); run this in move piece            
         }
 
+        // Tapped event for player 2 (yellow)
+        private void MoveChoiceTwo(object sender, TappedRoutedEventArgs e)
+        {
+                Ellipse moveThisPeice = (Ellipse)sender;
+                playerTurn = true;
+                makeMove.Fill = moveThisPeice.Fill;
+                comparePiece = "Yellow";           
+        }
+       
+        //logic complete bredren- all the logic for finding four in a row!! finally complete, tested and running.. praise haile selassie
         private void searchForWin()
         {
-           
+            //search horizontally
             for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < 7; j++)
+                for (int j = 0; j < 6; j++)
                 {
-
-                    if (searchForWinarray[i,j].Fill == searchForWinarray[i+1,j+1].Fill)
+                    //will run this part so it is iterarting through array properly
+                    //searchForWinarray[i, j].Fill = new SolidColorBrush(Colors.Black);
+                    if (j < 4)
                     {
-                        searchForWinarray[i,j].Fill = new SolidColorBrush(Colors.Black);
-                        
-                    }                   
+                        if (searchForWinarray[i, j].Tag == searchForWinarray[i, j + 1].Tag && searchForWinarray[i, j + 1].Tag == searchForWinarray[i, j + 2].Tag && searchForWinarray[i, j + 2].Tag == searchForWinarray[i, j + 3].Tag)
+                        {
+                            //winCounter++;
+                            searchForWinarray[i, j].Fill = new SolidColorBrush(Colors.Black);
+                            searchForWinarray[i, j + 1].Fill = new SolidColorBrush(Colors.Black);
+                            searchForWinarray[i, j + 2].Fill = new SolidColorBrush(Colors.Black);
+                            searchForWinarray[i, j + 3].Fill = new SolidColorBrush(Colors.Black);
+
+                        }
+                    }                
                 }
-            }           
+            }//end of horizontal search
+
+            //search vertically
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    //will run this part so it is iterarting through array properly
+                    //searchForWinarray[i, j].Fill = new SolidColorBrush(Colors.Black);
+                    if (i < 3)
+                    {
+                        if (searchForWinarray[i, j].Tag == searchForWinarray[i+1, j].Tag && searchForWinarray[i + 1, j].Tag == searchForWinarray[i+2, j].Tag && searchForWinarray[i+2, j].Tag == searchForWinarray[i+3, j].Tag)
+                        {
+                            //winCounter++;
+                            searchForWinarray[i, j].Fill = new SolidColorBrush(Colors.Black);
+                            searchForWinarray[i+1, j].Fill = new SolidColorBrush(Colors.Black);
+                            searchForWinarray[i+2, j].Fill = new SolidColorBrush(Colors.Black);
+                            searchForWinarray[i+3, j].Fill = new SolidColorBrush(Colors.Black);
+
+                        }
+                    }
+                }
+            }//end of vertical search
+
+            //search diagonal from left to right
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    //will run this part so it is iterarting through array properly
+                    //searchForWinarray[i, j].Fill = new SolidColorBrush(Colors.Black);
+                    if (i < 3 && j < 4)
+                    {
+                        if (searchForWinarray[i, j].Tag == searchForWinarray[i + 1, j+1].Tag && searchForWinarray[i + 1, j+1].Tag == searchForWinarray[i + 2, j+2].Tag && searchForWinarray[i + 2, j+2].Tag == searchForWinarray[i + 3, j+3].Tag)
+                        {
+                            //winCounter++;
+                            searchForWinarray[i, j].Fill = new SolidColorBrush(Colors.Black);
+                            searchForWinarray[i + 1, j+1].Fill = new SolidColorBrush(Colors.Black);
+                            searchForWinarray[i + 2, j+2].Fill = new SolidColorBrush(Colors.Black);
+                            searchForWinarray[i + 3, j+3].Fill = new SolidColorBrush(Colors.Black);
+
+                        }
+                    }
+                }
+            }//end of diagonal from left to right search
+
+            //search diagonal from right to left
+            for (int i = 5; i > 0; i--)
+            {
+                for (int j = 0; j <6; j++)
+                {
+                    //will run this part so it is iterarting through array properly
+                    //searchForWinarray[i, j].Fill = new SolidColorBrush(Colors.Black);
+                    if(i > 2 && j < 4 )
+                        if (searchForWinarray[i, j].Tag == searchForWinarray[i - 1, j + 1].Tag && searchForWinarray[i - 1, j + 1].Tag == searchForWinarray[i - 2, j + 2].Tag  && searchForWinarray[i - 2, j + 2].Tag == searchForWinarray[i - 3, j + 3].Tag)
+                        {
+                            //winCounter++;
+                            searchForWinarray[i, j].Fill = new SolidColorBrush(Colors.Black);
+                            searchForWinarray[i - 1, j +1].Fill = new SolidColorBrush(Colors.Black);
+                            searchForWinarray[i - 2, j + 2].Fill = new SolidColorBrush(Colors.Black);
+                            searchForWinarray[i - 3, j + 3].Fill = new SolidColorBrush(Colors.Black);
+                            // using for reference searchForWinarray[0, 0].Fill = new SolidColorBrush(Colors.Black);
+                        }
+                    
+                }
+            }//end of diagonal from right to left search
         }
     }
 }
