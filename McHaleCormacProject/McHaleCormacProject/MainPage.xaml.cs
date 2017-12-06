@@ -34,6 +34,8 @@ namespace McHaleCormacProject
         Ellipse [,] searchForWinarray = new Ellipse [6,7];
         Boolean playerTurn = false;
         String comparePiece;
+        int redWins = 0;
+        int yellowWins = 0;
 #endregion
         //for stacking in columns correctly
         #region - column counters
@@ -44,7 +46,8 @@ namespace McHaleCormacProject
         int column5counter = 0;
         int column6counter = 0;
         int column7counter = 0;
-#endregion
+        #endregion
+
         public MainPage()
         {
             this.InitializeComponent();          
@@ -62,17 +65,23 @@ namespace McHaleCormacProject
         // also creates ellipses for player1 (red) and player2 (yellow)
         private void createPlayingBoard()
         {
+            startGame.Visibility = Visibility.Collapsed;
             //changeBackRound to blue
             Grid changeRoot = FindName("rootGrid") as Grid;
             changeRoot.Background = new SolidColorBrush(Colors.Gray);
             //may not need this
             //changeRoot.HorizontalAlignment = HorizontalAlignment.Center;
-
+            //button to refresh game
+            Button clearGame = new Button();
+            clearGame.Content = "Clear Game";
+            clearGame.VerticalAlignment = VerticalAlignment.Top;
+            clearGame.Click += cleared;
+            changeRoot.Children.Add(clearGame);
             StackPanel alignGame = new StackPanel();
             alignGame.Orientation = Orientation.Horizontal;
             alignGame.HorizontalAlignment = HorizontalAlignment.Center;
             alignGame.Height = 500;
-            alignGame.Width = 700;
+            //alignGame.Width = 700;
             changeRoot.Children.Add(alignGame);
             //create the actual object
             Grid playingBoard = new Grid();
@@ -110,7 +119,16 @@ namespace McHaleCormacProject
                     moveChoice.Tapped+= MovePiece;
                     searchForWinarray[i,j]  = moveChoice;
                 }
-            }           
+            }
+            //text for players
+            TextBlock playerOne = new TextBlock();
+            playerOne.Text = "Player 1, Wins: "+redWins;
+            playerOne.VerticalAlignment = VerticalAlignment.Center;
+            playerOne.Margin = new Thickness(5, 5, 5, 5);
+            TextBlock playerTwo = new TextBlock();
+            playerTwo.VerticalAlignment = VerticalAlignment.Center;
+            playerTwo.Text = "Player 2, Wins: "+yellowWins;
+            playerTwo.Margin = new Thickness(5, 5, 5, 5);
             //add players to board in correct order
             Player1.Height = 60;
             Player1.Width = 60;
@@ -124,10 +142,36 @@ namespace McHaleCormacProject
             Player2.Tapped += MoveChoiceTwo;
             //add the board                  
             alignGame.Children.Add(playingBoard);
+            alignGame.Children.Add(playerOne);
             alignGame.Children.Add(Player1);
-            alignGame.Children.Add(Player2);           
+
+            alignGame.Children.Add(playerTwo);
+            alignGame.Children.Add(Player2);
+            playerTwo.Visibility = Visibility.Collapsed;
+            Player2.Visibility = Visibility.Collapsed;
         }
-        
+        //function to clear the game
+        private void cleared(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    Ellipse clearGame = FindName("search"+i+j) as Ellipse;
+                    clearGame.Fill = new SolidColorBrush(Colors.White);
+                    clearGame.Tag = "newTag"+i+j;
+                    //reset the counters
+                     column1counter = 0;
+                     column2counter = 0;
+                     column3counter = 0;
+                     column4counter = 0;
+                     column5counter = 0;
+                     column6counter = 0;
+                     column7counter = 0;
+                }
+            }
+        }
+
         //the tapped event for all white ellipes on the board
         //also contains all the moves so that the pieces stack properly
         private void MovePiece(object sender, TappedRoutedEventArgs e)
@@ -779,7 +823,7 @@ namespace McHaleCormacProject
             //search vertically
             for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < 6; j++)
+                for (int j = 0; j < 7; j++)
                 {
                     //will run this part so it is iterarting through array properly
                     //searchForWinarray[i, j].Fill = new SolidColorBrush(Colors.Black);
@@ -841,5 +885,7 @@ namespace McHaleCormacProject
                 }
             }//end of diagonal from right to left search
         }
+
+
     }
 }
