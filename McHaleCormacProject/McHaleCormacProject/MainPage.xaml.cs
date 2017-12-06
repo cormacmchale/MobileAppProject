@@ -135,11 +135,13 @@ namespace McHaleCormacProject
             Player1.Fill = new SolidColorBrush(Colors.Red);
             Player1.Margin = new Thickness(10, 10, 10, 10);
             Player1.Tapped += MoveChoice;
+            Player1.Name = "redPiece";
             Player2.Height = 60;
             Player2.Width = 60;
             Player2.Fill = new SolidColorBrush(Colors.Yellow);
             Player2.Margin = new Thickness(10, 10, 10, 10);
             Player2.Tapped += MoveChoiceTwo;
+            Player2.Name = "yellowPiece";
             //add the board                  
             alignGame.Children.Add(playingBoard);
             alignGame.Children.Add(playerOne);
@@ -147,7 +149,7 @@ namespace McHaleCormacProject
 
             alignGame.Children.Add(playerTwo);
             alignGame.Children.Add(Player2);
-            playerTwo.Visibility = Visibility.Collapsed;
+            //playerTwo.Visibility = Visibility.Collapsed;
             Player2.Visibility = Visibility.Collapsed;
         }
         //function to clear the game
@@ -176,6 +178,18 @@ namespace McHaleCormacProject
         //also contains all the moves so that the pieces stack properly
         private void MovePiece(object sender, TappedRoutedEventArgs e)
         {
+            Ellipse showPieceTwo = FindName("yellowPiece") as Ellipse;
+            Ellipse showPieceOne = FindName("redPiece") as Ellipse;
+            if (showPieceTwo.Visibility == Visibility.Collapsed)
+            {
+                showPieceTwo.Visibility = Visibility.Visible;
+                showPieceOne.Visibility = Visibility.Collapsed;
+            }
+            else if (showPieceOne.Visibility == Visibility.Collapsed)
+            {
+                showPieceOne.Visibility = Visibility.Visible;
+                showPieceTwo.Visibility = Visibility.Collapsed;
+            }
             Ellipse arrayPosition = (Ellipse)sender;
             string name = arrayPosition.Name;
             string column = name.Substring(7, 1);
