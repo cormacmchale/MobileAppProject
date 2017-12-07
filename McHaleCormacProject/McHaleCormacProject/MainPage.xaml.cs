@@ -130,11 +130,11 @@ namespace McHaleCormacProject
                 }
             }
             //text for players
-            playerOne.Text = "Player 1, Wins: "+redWins;
+            playerOne.Text = "Player 1 - Wins: "+redWins;
             playerOne.VerticalAlignment = VerticalAlignment.Center;
             playerOne.Margin = new Thickness(5, 5, 5, 5);
             playerTwo.VerticalAlignment = VerticalAlignment.Center;
-            playerTwo.Text = "Player 2, Wins: "+yellowWins;
+            playerTwo.Text = "Player 2 - Wins: "+yellowWins;
             playerTwo.Margin = new Thickness(5, 5, 5, 5);
             //add players to board in correct order
             Player1.Height = 60;
@@ -953,7 +953,7 @@ namespace McHaleCormacProject
                             if (searchForWinarray[i, j].Tag.ToString() == "red")
                             {
                                 redWins++;
-                                playerOne.Text = "Player 1, Wins: " + redWins;
+                                playerOne.Text = "Player 1 - Wins: " + redWins;
                             }
                             else if (searchForWinarray[i, j].Tag.ToString() == "yellow")
                             {
