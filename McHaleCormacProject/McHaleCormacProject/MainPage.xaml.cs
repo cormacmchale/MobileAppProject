@@ -854,12 +854,12 @@ namespace McHaleCormacProject
                             if (searchForWinarray[i, j].Tag.ToString() == "red")
                             {                            
                                 redWins++;
-                                playerOne.Text = "Player 1, Wins: " + redWins;
+                                playerOne.Text = "Player 1 - Wins: " + redWins;
                             }
                             else if (searchForWinarray[i, j].Tag.ToString() == "yellow")
                             {
                                 yellowWins++;
-                                playerTwo.Text = "Player 1, Wins: " + yellowWins;
+                                playerTwo.Text = "Player 2 - Wins: " + yellowWins;
                             }
                             //winCounter++;
                             searchForWinarray[i, j].Fill = new SolidColorBrush(Colors.Black);
@@ -888,12 +888,12 @@ namespace McHaleCormacProject
                             if (searchForWinarray[i, j].Tag.ToString() == "red")
                             {
                                 redWins++;
-                                playerOne.Text = "Player 1, Wins: " + redWins;
+                                playerOne.Text = "Player 1 - Wins: " + redWins;
                             }
                             else if (searchForWinarray[i, j].Tag.ToString() == "yellow")
                             {
                                 yellowWins++;
-                                playerTwo.Text = "Player 1, Wins: " + yellowWins;
+                                playerTwo.Text = "Player 2 - Wins: " + yellowWins;
                             }
                             //winCounter++;
                             searchForWinarray[i, j].Fill = new SolidColorBrush(Colors.Black);
@@ -922,12 +922,12 @@ namespace McHaleCormacProject
                             if (searchForWinarray[i, j].Tag.ToString() == "red")
                             {
                                 redWins++;
-                                playerOne.Text = "Player 1, Wins: " + redWins;
+                                playerOne.Text = "Player 1 - Wins: " + redWins;
                             }
                             else if (searchForWinarray[i, j].Tag.ToString() == "yellow")
                             {
                                 yellowWins++;
-                                playerTwo.Text = "Player 1, Wins: " + yellowWins;
+                                playerTwo.Text = "Player 2 - Wins: " + yellowWins;
                             }
                             //winCounter++;
                             searchForWinarray[i, j].Fill = new SolidColorBrush(Colors.Black);
@@ -958,7 +958,7 @@ namespace McHaleCormacProject
                             else if (searchForWinarray[i, j].Tag.ToString() == "yellow")
                             {
                                 yellowWins++;
-                                playerTwo.Text = "Player 1, Wins: " + yellowWins;
+                                playerTwo.Text = "Player 2 - Wins: " + yellowWins;
                             }
                             //winCounter++;
                             searchForWinarray[i, j].Fill = new SolidColorBrush(Colors.Black);

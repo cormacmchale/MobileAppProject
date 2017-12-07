@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\Cormac\Desktop\Second Year\MobileApp\McHaleCormacProject\McHaleCormacProject\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-07T11:32:33.711</Modified>
+      <Modified>2017-12-07T11:43:03.740</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\Second Year\MobileApp\McHaleCormacProject\McHaleCormacProject\bin\x86\Debug\McHaleCormacProject.exe">
       <PackagePath>entrypoint\McHaleCormacProject.exe</PackagePath>
-      <Modified>2017-12-07T11:32:33.423</Modified>
+      <Modified>2017-12-07T11:43:03.443</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\.nuget\packages\Microsoft.CSharp\4.0.1\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -548,7 +548,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\Second Year\MobileApp\McHaleCormacProject\McHaleCormacProject\bin\x86\Debug\Core\McHaleCormacProject.exe">
       <PackagePath>McHaleCormacProject.exe</PackagePath>
-      <Modified>2017-12-07T11:32:33.709</Modified>
+      <Modified>2017-12-07T11:43:03.737</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
