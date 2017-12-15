@@ -21,3 +21,4 @@ added a working win counter by making player info global information
 added error handling so pieces must go one after the other
 add more error handling so that you must reset after a win
 project completed.. may try to add saved settings
+project finished.. took away the click to start button and now just need to set up developer account.
