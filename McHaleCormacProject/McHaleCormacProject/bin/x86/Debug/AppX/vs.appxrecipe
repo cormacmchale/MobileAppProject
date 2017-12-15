@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\Cormac\Desktop\Second Year\MobileApp\McHaleCormacProject\McHaleCormacProject\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-07T11:57:35.200</Modified>
+      <Modified>2017-12-15T11:35:02.041</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\Second Year\MobileApp\McHaleCormacProject\McHaleCormacProject\bin\x86\Debug\McHaleCormacProject.exe">
       <PackagePath>entrypoint\McHaleCormacProject.exe</PackagePath>
-      <Modified>2017-12-07T11:57:34.897</Modified>
+      <Modified>2017-12-15T11:34:59.092</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\.nuget\packages\Microsoft.CSharp\4.0.1\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -535,7 +535,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\Second Year\MobileApp\McHaleCormacProject\McHaleCormacProject\bin\x86\Debug\McHaleCormacProject.xr.xml">
       <PackagePath>McHaleCormacProject.xr.xml</PackagePath>
-      <Modified>2017-11-25T14:52:27.618</Modified>
+      <Modified>2017-12-15T11:34:58.235</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.15063.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -544,11 +544,11 @@
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\Second Year\MobileApp\McHaleCormacProject\McHaleCormacProject\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-11-25T14:52:28.573</Modified>
+      <Modified>2017-12-15T11:35:01.417</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Cormac\Desktop\Second Year\MobileApp\McHaleCormacProject\McHaleCormacProject\bin\x86\Debug\Core\McHaleCormacProject.exe">
       <PackagePath>McHaleCormacProject.exe</PackagePath>
-      <Modified>2017-12-07T11:57:35.197</Modified>
+      <Modified>2017-12-15T11:35:02.026</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

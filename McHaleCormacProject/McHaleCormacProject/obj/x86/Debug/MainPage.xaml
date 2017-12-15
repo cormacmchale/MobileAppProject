@@ -9,10 +9,7 @@
 
     <Grid x:ConnectionId='1' Name="rootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="Auto">
 
-        <StackPanel Width="Auto" Height ="200" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:ConnectionId='2' Name="startGame" Content="Start Game"                         />
-        </StackPanel>
-
     </Grid>
+    
 </Page>
 

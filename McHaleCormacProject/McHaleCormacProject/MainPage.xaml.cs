@@ -50,24 +50,19 @@ namespace McHaleCormacProject
         int column7counter = 0;
         #endregion
 
+        //run game directly from here
         public MainPage()
         {
-            this.InitializeComponent();          
-        }
-        
-        //start game clicked event
-        private void startGame_Click(object sender, RoutedEventArgs e)
-        {
+            this.InitializeComponent();
             //run correct function
             createPlayingBoard();
         }
-        
+                
         // all gui for the board and how it appears when app runs
         // creates all ellipes for board and stores them in searchforwinarray
         // also creates ellipses for player1 (red) and player2 (yellow)
         private void createPlayingBoard()
         {
-            startGame.Visibility = Visibility.Collapsed;
             //changeBackRound to blue
             Grid changeRoot = FindName("rootGrid") as Grid;
             changeRoot.Background = new SolidColorBrush(Colors.Gray);
@@ -836,7 +831,7 @@ namespace McHaleCormacProject
                 comparePiece = "Yellow";
             }
         }
-       
+
         //logic complete bredren- all the logic for finding four in a row!! finally complete, tested and running.. praise haile selassie
         private void searchForWin()
         {
@@ -852,7 +847,7 @@ namespace McHaleCormacProject
                         if (searchForWinarray[i, j].Tag == searchForWinarray[i, j + 1].Tag && searchForWinarray[i, j + 1].Tag == searchForWinarray[i, j + 2].Tag && searchForWinarray[i, j + 2].Tag == searchForWinarray[i, j + 3].Tag)
                         {
                             if (searchForWinarray[i, j].Tag.ToString() == "red")
-                            {                            
+                            {
                                 redWins++;
                                 playerOne.Text = "Player 1 - Wins: " + redWins;
                             }
@@ -867,10 +862,10 @@ namespace McHaleCormacProject
                             searchForWinarray[i, j + 2].Fill = new SolidColorBrush(Colors.Black);
                             searchForWinarray[i, j + 3].Fill = new SolidColorBrush(Colors.Black);
                             comparePiece = "ResetBoard";
-                         
+
                         }
 
-                    }                
+                    }
                 }
             }//end of horizontal search
 
@@ -883,7 +878,7 @@ namespace McHaleCormacProject
                     //searchForWinarray[i, j].Fill = new SolidColorBrush(Colors.Black);
                     if (i < 3)
                     {
-                        if (searchForWinarray[i, j].Tag == searchForWinarray[i+1, j].Tag && searchForWinarray[i + 1, j].Tag == searchForWinarray[i+2, j].Tag && searchForWinarray[i+2, j].Tag == searchForWinarray[i+3, j].Tag)
+                        if (searchForWinarray[i, j].Tag == searchForWinarray[i + 1, j].Tag && searchForWinarray[i + 1, j].Tag == searchForWinarray[i + 2, j].Tag && searchForWinarray[i + 2, j].Tag == searchForWinarray[i + 3, j].Tag)
                         {
                             if (searchForWinarray[i, j].Tag.ToString() == "red")
                             {
@@ -897,11 +892,11 @@ namespace McHaleCormacProject
                             }
                             //winCounter++;
                             searchForWinarray[i, j].Fill = new SolidColorBrush(Colors.Black);
-                            searchForWinarray[i+1, j].Fill = new SolidColorBrush(Colors.Black);
-                            searchForWinarray[i+2, j].Fill = new SolidColorBrush(Colors.Black);
-                            searchForWinarray[i+3, j].Fill = new SolidColorBrush(Colors.Black);
+                            searchForWinarray[i + 1, j].Fill = new SolidColorBrush(Colors.Black);
+                            searchForWinarray[i + 2, j].Fill = new SolidColorBrush(Colors.Black);
+                            searchForWinarray[i + 3, j].Fill = new SolidColorBrush(Colors.Black);
                             comparePiece = "ResetBoard";
-                            
+
                         }
                     }
                 }
@@ -916,8 +911,8 @@ namespace McHaleCormacProject
                     //searchForWinarray[i, j].Fill = new SolidColorBrush(Colors.Black);
                     if (i < 3 && j < 4)
                     {
-                 
-                        if (searchForWinarray[i, j].Tag == searchForWinarray[i + 1, j+1].Tag && searchForWinarray[i + 1, j+1].Tag == searchForWinarray[i + 2, j+2].Tag && searchForWinarray[i + 2, j+2].Tag == searchForWinarray[i + 3, j+3].Tag)
+
+                        if (searchForWinarray[i, j].Tag == searchForWinarray[i + 1, j + 1].Tag && searchForWinarray[i + 1, j + 1].Tag == searchForWinarray[i + 2, j + 2].Tag && searchForWinarray[i + 2, j + 2].Tag == searchForWinarray[i + 3, j + 3].Tag)
                         {
                             if (searchForWinarray[i, j].Tag.ToString() == "red")
                             {
@@ -931,9 +926,9 @@ namespace McHaleCormacProject
                             }
                             //winCounter++;
                             searchForWinarray[i, j].Fill = new SolidColorBrush(Colors.Black);
-                            searchForWinarray[i + 1, j+1].Fill = new SolidColorBrush(Colors.Black);
-                            searchForWinarray[i + 2, j+2].Fill = new SolidColorBrush(Colors.Black);
-                            searchForWinarray[i + 3, j+3].Fill = new SolidColorBrush(Colors.Black);
+                            searchForWinarray[i + 1, j + 1].Fill = new SolidColorBrush(Colors.Black);
+                            searchForWinarray[i + 2, j + 2].Fill = new SolidColorBrush(Colors.Black);
+                            searchForWinarray[i + 3, j + 3].Fill = new SolidColorBrush(Colors.Black);
                             comparePiece = "ResetBoard";
                         }
                     }
@@ -943,12 +938,12 @@ namespace McHaleCormacProject
             //search diagonal from right to left
             for (int i = 5; i > 0; i--)
             {
-                for (int j = 0; j <6; j++)
+                for (int j = 0; j < 6; j++)
                 {
                     //will run this part so it is iterarting through array properly
                     //searchForWinarray[i, j].Fill = new SolidColorBrush(Colors.Black);
-                    if(i > 2 && j < 4 )
-                        if (searchForWinarray[i, j].Tag == searchForWinarray[i - 1, j + 1].Tag && searchForWinarray[i - 1, j + 1].Tag == searchForWinarray[i - 2, j + 2].Tag  && searchForWinarray[i - 2, j + 2].Tag == searchForWinarray[i - 3, j + 3].Tag)
+                    if (i > 2 && j < 4)
+                        if (searchForWinarray[i, j].Tag == searchForWinarray[i - 1, j + 1].Tag && searchForWinarray[i - 1, j + 1].Tag == searchForWinarray[i - 2, j + 2].Tag && searchForWinarray[i - 2, j + 2].Tag == searchForWinarray[i - 3, j + 3].Tag)
                         {
                             if (searchForWinarray[i, j].Tag.ToString() == "red")
                             {
@@ -962,17 +957,14 @@ namespace McHaleCormacProject
                             }
                             //winCounter++;
                             searchForWinarray[i, j].Fill = new SolidColorBrush(Colors.Black);
-                            searchForWinarray[i - 1, j +1].Fill = new SolidColorBrush(Colors.Black);
+                            searchForWinarray[i - 1, j + 1].Fill = new SolidColorBrush(Colors.Black);
                             searchForWinarray[i - 2, j + 2].Fill = new SolidColorBrush(Colors.Black);
                             searchForWinarray[i - 3, j + 3].Fill = new SolidColorBrush(Colors.Black);
                             // using for reference searchForWinarray[0, 0].Fill = new SolidColorBrush(Colors.Black);
                             comparePiece = "ResetBoard";
                         }
-                    
                 }
             }//end of diagonal from right to left search
         }
-
-
     }
 }
